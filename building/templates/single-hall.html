@@ -1,0 +1,32 @@
+<h1>This is single hall template.....</h1>
+
+
+<section>
+  <div>
+    <img src="{{hall.imageUrl}}" alt="Sifax Lecture theather" />
+  </div>
+
+  <div>
+    <h2>Hall name: {{hall.name}}  </h2>
+    <p>Hall location: {{hall.location}}</p>
+    <h3><a href="{% url "pre-schedule" hall.id %}"> Book {{hall.name}} </a></h3>
+  </div>
+</section>
+
+
+<div> <h2>Find the details for the courses schedule at {{hall.name}}</h2> </div>
+
+
+{% for schedule in hall_schedules  %}
+<div>
+
+<h3> Date: {{schedule.pre_schedule.date}} </h3>
+<h3> Course: {{schedule.pre_schedule.course}} </h3>
+
+<h3> Class Start from: {{schedule.start_time_display}} to {{schedule.end_time_display}} </h2>
+
+<p> Course information: {{schedule.course_information}} </p>
+<hr>
+
+</div>
+{% endfor %}

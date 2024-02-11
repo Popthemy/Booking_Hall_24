@@ -1,0 +1,16 @@
+<h1>This is my halls templates.....</h1>
+
+{% for hall in halls %}
+<section>
+  <div>
+    <img src="{{hall.imageUrl}}" alt="Sifax Lecture theather" />
+  </div>
+
+  <div>
+    <h2>Hall name: {{hall.name}}</h2>
+    <p>Hall location: {{hall.location}}</p>
+    <h3><a href="{% url 'single-hall' hall.id %}"> Check {{hall.name}} schedule</a></h3>
+
+  </div>
+</section>
+{% endfor %}
