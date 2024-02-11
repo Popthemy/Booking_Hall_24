@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Book_hall',
         'USER': 'postgres',
-        'PASSWORD': os.environ.get('book hall postgres PASSWORD'),
+        'PASSWORD': 'leebackendengine',
         'HOST': 'localhost',
         'PORT': '5432',
     }
