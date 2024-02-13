@@ -1,16 +1,19 @@
 <h2>Pre - Schedule</h2>
 
-<h3>This is the name of the hall passed in {{pre_schedule.hall.name }} </h3>
+<h3>Schedule your class at {{ hall.name }} </h3>
 <div>
-  <form action="#" method="Post">
-    <label for="course">Specify Course</label>
-    <input type="text" placeholder="Enter the course code" />
-
-    <label for="course">Hall</label>
-    <input type="text" placeholder="Enter where the class will hold" />
-
- 
-    <input type="button" value="Complete scheduling" />
+  <form method="POST" >
+    {% csrf_token %}
+    {{ form.as_p}}
+    
+    <input type="submit" value="Complete scheduling" />
 
   </form>
+
+{% if messages %}
+{% for message in messages  %}
+{{ message }}
+{% endfor %}
+
+{% endif %}
 </div>

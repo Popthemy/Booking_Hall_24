@@ -13,4 +13,12 @@
 
   </div>
 </section>
+
+
 {% endfor %}
+
+{% if messages %}
+{% for message in messages  %}
+{{ message }}
+{% endfor %}
+{% endif %}

@@ -28,7 +28,7 @@ class Main_Schedule(models.Model):
     start_time = models.PositiveIntegerField(
         choices=TIME_CHOICES)  # course begins
     end_time = models.PositiveIntegerField(
-        choices=TIME_CHOICES)  # course begins
+        choices=TIME_CHOICES)  # course begins  
     course_information = models.TextField(blank=True, null=True)
     id = models.UUIDField(default=uuid.uuid4,
                           primary_key=True, unique=True, editable=False)
