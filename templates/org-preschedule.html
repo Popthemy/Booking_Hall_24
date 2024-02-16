@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Booking Schedule</title>
+
+        <!-- load stylesheets -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">  <!-- Google web font "Open Sans" -->
+        <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+        <link rel="stylesheet" href="../css/bootstrap.min.css">                                      <!-- Bootstrap style -->
+        <link rel="stylesheet" type="text/css" href="../css/datepicker.css"/>
+        <link rel="stylesheet" type="text/css" href="../slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="../slick/slick-theme.css"/>
+        <link rel="stylesheet" href="../css/templatemo-style.css">                                   <!-- Templatemo style -->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+                <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+    </head>
+
+    <body>
+
+        <!-- nav-bar for header  -->
+        <div class="tm-main-content" id="top">
+            <div class="tm-top-bar-bg"></div>
+            <div class="tm-top-bar" id="tm-top-bar">
+                <div class="container">
+                    <div class="row">
+                        <nav class="navbar navbar-expand-lg narbar-light">
+                            <a class="navbar-brand mr-auto" href="#">
+                                <span>BK</span>
+                            </a>
+                            <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
+                                <ul class="navbar-nav ml-auto">
+                                  <li class="nav-item">
+                                    <a class="nav-link active" href="#top">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="halls.html">Hall</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pre-schedule.html">Schedule Class</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact-us.html">Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>                            
+                    </nav>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- .tm-top-bar -->
+
+
+        <!-- The booking/schedule page  -->
+
+        <section class="tm-banner">
+            <div class="tm-container-outer tm-banner-bg">
+                <div class="container">
+
+                    <div class="row tm-banner-row tm-banner-row-header">
+                        <div class="col-xs-12">
+                            <div class="tm-banner-header">
+                                <h1 class="text-uppercase tm-banner-title">Let's SCHEDULE</h1>
+                                <img src="../img/dots-3.png" alt="Dots">
+                                <p class="tm-banner-subtitle">Helps you abstract your scheduling process.</p>
+                                <a href="#" class="tm-down-arrow-link"><i class="fa fa-2x fa-angle-down tm-down-arrow"></i></a>       
+                            </div> 
+                        </div>  <!-- col-xs-12 -->                      
+                    </div> <!-- row -->
+                    <div class="row tm-banner-row" id="tm-section-search">
+
+                        <form action="nav-bar.html" method="get" class="tm-search-form tm-section-pad-2">
+                            <div class="form-row tm-search-form-row">                                
+                                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                                    <label for="inputCity">Choose Your Hall</label>
+                                    <input name="destination" type="text" class="form-control" id="inputCity" placeholder="Type your hall Sifax, 1200lt, 250lt...">
+                                </div>
+
+                                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                                    <label for="inputCity">Choose Course </label>
+                                    <input name="destination" type="text" class="form-control" id="inputCity" placeholder="Type your CSC201, CYB201, INS201...">
+                                </div>
+
+                                
+                            </div> <!-- form-row -->
+                            <div class="form-row tm-search-form-row">
+                                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                                    <label for="inputCheckOut">Choose Date</label>
+                                    <input name="check-out" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
+                                </div>
+                                
+                                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                                    <label for="btnSubmit">&nbsp;</label>
+                                    <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">Check Hall Availabilty</button>
+                                </div>
+                            </div>                              
+                        </form>                             
+
+                    </div> <!-- row -->
+                    <div class="tm-banner-overlay"></div>
+                </div>  <!-- .container -->                   
+            </div>     <!-- .tm-container-outer -->                 
+        </section>
+
+        <section class="p-5 tm-container-outer tm-bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">                        
+                        <h2 class="text-uppercase mb-4">Your <strong>Seamless Scheduling</strong> is our priority</h2>
+                        <p class="mb-4">Nullam auctor, sapien sit amet lacinia euismod, lorem magna lobortis massa, in tincidunt mi metus quis lectus. Duis nec lobortis velit. Vivamus id magna vulputate, tempor ante eget, tempus augue. Maecenas ultricies neque magna.</p>
+                        <a href="#" class="text-uppercase btn-primary tm-btn">Continue explore</a>                              
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </body>
+
+    <script src="../js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+    <script src="../js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->       
+    <script src="../js/bootstrap.min.js"></script>                 <!-- https://getbootstrap.com/ -->
+    <script src="../js/datepicker.min.js"></script>                <!-- https://github.com/qodesmith/datepicker -->
+    <script src="../js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+    <script src="../slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
+    <script src="../js/jquery.scrollTo.min.js"></script>  
+</html>

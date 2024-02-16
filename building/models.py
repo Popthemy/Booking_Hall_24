@@ -8,7 +8,7 @@ class Hall(models.Model):
 
     name = models.CharField(max_length=255)
     hall_image = models.ImageField(
-        null=True, blank=True, upload_to='halls/', default='hall.png')
+        null=True, blank=True, upload_to='halls/', default='default hall.png')
     location = models.TextField(null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4,
                           primary_key=True, unique=True, editable=False)

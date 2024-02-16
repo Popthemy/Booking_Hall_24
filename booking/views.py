@@ -1,22 +1,22 @@
 from django.shortcuts import render, redirect
 from building.models import Hall
-from .models import Main_Schedule, Pre_Schedule
-from .forms import Pre_ScheduleForm, Main_ScheduleForm
+from .models import MainSchedule, PreSchedule
+from .forms import PreScheduleForm, MainScheduleForm
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 # Create your views here.
 
 
-def preSchedule(request, pk):
+def create_preSchedule(request, pk):
     hall = Hall.objects.get(pk=pk)
-    form = Pre_ScheduleForm()
+    forms = PreScheduleForm()
 
     if request.method == "POST":
 
-        form = Pre_ScheduleForm(request.POST)
+        forms = PreScheduleForm(request.POST)
 
-        if form.is_valid():
-            pre_schedule_form = form.save(commit=False)
+        if forms.is_valid():
+            pre_schedule_form = forms.save(commit=False)
 
             # filling the hall field
             pre_schedule_form.hall = hall
@@ -27,23 +27,23 @@ def preSchedule(request, pk):
 
             return redirect('main-schedule', pre_schedule_form.id)
 
-    context = {'hall': hall, 'form': form}
-    return render(request, 'pre-schedule.html', context)
+    context = {'hall': hall, 'forms': forms}
+    return render(request, 'pre-schedule-form.html', context)
 
 
-def mainSchedule(request, pk):
-    pre_schedule = Pre_Schedule.objects.get(pk=pk)
+def create_mainSchedule(request, pk):
+    pre_schedule = PreSchedule.objects.get(pk=pk)
 
     current_url = request.get_full_path()  # for redirection inccase of error
 
     # constructor require pre_schedule it must be passed in to generate dynamic time
-    form = Main_ScheduleForm(pre_schedule=pre_schedule)
+    forms = MainScheduleForm(pre_schedule=pre_schedule)
     try:
         if request.POST:
-            form = Main_ScheduleForm(request.POST, pre_schedule=pre_schedule)
+            forms = MainScheduleForm(request.POST, pre_schedule=pre_schedule)
 
-            if form.is_valid():
-                main_schedule_form = form.save(commit=False)
+            if forms.is_valid():
+                main_schedule_form = forms.save(commit=False)
                 main_schedule_form.pre_schedule = pre_schedule
                 main_schedule_form.save()
 
@@ -57,5 +57,5 @@ def mainSchedule(request, pk):
         messages.error(request, message)
         return redirect(current_url)
 
-    context = {'pre_schedule': pre_schedule, 'form': form}
-    return render(request, 'main-schedule.html', context)
+    context = {'pre_schedule': pre_schedule, 'forms': forms}
+    return render(request, 'main-schedule-form.html', context)

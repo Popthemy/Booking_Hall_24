@@ -1,0 +1,60 @@
+{% extends "base.html" %} 
+{% block content %}
+
+
+<section class="tm-banner">
+  <div class="tm-container-outer tm-banner-bg">
+    <div class="container">
+      <div class="row tm-banner-row tm-banner-row-header">
+        <div class="col-xs-12">
+          <div class="tm-banner-header">
+            <h1 class="text-uppercase tm-banner-title">Add Hall</h1>
+            <img src="/static/images/dots-3.png" alt="Dots" />
+          </div>
+        </div>
+        <!-- col-xs-12 -->
+      </div>
+      <!-- row -->
+      <div class="row tm-banner-row" id="tm-section-search">
+        <form
+          method="POST"
+          enctype="multipart/form-data"
+          class="tm-search-form tm-section-pad-2"
+        >
+          {% csrf_token %} {% for field in forms %}
+          <div class="form-row tm-search-form-row">
+            <div
+              class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
+            >
+              <label for="inputCity">{{field.label}}</label>
+
+              {{field}}
+            </div>
+          </div>
+          <!-- form-row -->
+          {% endfor %}
+
+          <div
+            class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
+          >
+            <label for="btnSubmit">&nbsp;</label>
+            <button
+              type="submit"
+              class="btn btn-primary tm-btn tm-btn-search text-uppercase"
+              id="btnSubmit"
+            >
+              Add hall
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- row -->
+      <div class="tm-banner-overlay"></div>
+    </div>
+    <!-- .container -->
+  </div>
+  <!-- .tm-container-outer -->
+</section>
+
+
+{% endblock %}

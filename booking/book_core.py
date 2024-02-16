@@ -1,6 +1,9 @@
 
 '''Purpose of these function is to make sure a class isn't booked in the middle of a class'''
 
+MIN_TIME, MAX_TIME = 7, 19
+
+
 
 def dynamic_time_choices(start_end):
     ''' Getting dynamic time choices,  
@@ -11,7 +14,7 @@ def dynamic_time_choices(start_end):
 
 
     # total range of time for a day
-    TIME_CHOICES = [(H, f'{H-12}:00 PM') if H > 12 else (H, f'{H}:00 AM') for H in range(7, 20)]
+    TIME_CHOICES = [(H, f'{H-12}:00 PM') if H > 12 else (H, f'{H}:00 AM') for H in range(MIN_TIME , MAX_TIME)]
 
     # total duration of already booked classes gotten from start_end, since when a class ends a class can start we don't need the stop time
     unavailable_time = set( )

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Pre_Schedule, Main_Schedule
+from .models import PreSchedule, MainSchedule
 # Register your models here.
 
-admin.site.register(Pre_Schedule)
-admin.site.register(Main_Schedule)
+admin.site.register(PreSchedule)
+admin.site.register(MainSchedule)

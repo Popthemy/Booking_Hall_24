@@ -5,7 +5,7 @@ import uuid
 # Create your models here.
 
 
-class Pre_Schedule(models.Model):
+class PreSchedule(models.Model):
 
     course = models.CharField(max_length=255)
     hall = models.ForeignKey(Hall, on_delete=models.CASCADE)
@@ -20,11 +20,11 @@ class Pre_Schedule(models.Model):
         ordering = ['date']
 
 
-class Main_Schedule(models.Model):
+class MainSchedule(models.Model):
     # custom time range from 7 to 7
     TIME_CHOICES = [(H, f'{H-12}:00 PM') if H > 12 else (H, f'{H}:00 AM') for H in range(7, 20)]
 
-    pre_schedule = models.OneToOneField(Pre_Schedule, on_delete=models.CASCADE)
+    pre_schedule = models.OneToOneField(PreSchedule, on_delete=models.CASCADE)
     start_time = models.PositiveIntegerField(
         choices=TIME_CHOICES)  # course begins
     end_time = models.PositiveIntegerField(
@@ -39,7 +39,7 @@ class Main_Schedule(models.Model):
     class Meta:
         # should be ordered by the date of preshcedule.
         unique_together = [['pre_schedule', 'start_time']]
-        ordering = ['pre_schedule__date']
+        ordering = ['-pre_schedule__date']
 
     @property
     def start_time_display(self):

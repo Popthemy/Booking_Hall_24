@@ -1,24 +1,50 @@
-<h1>This is my halls templates.....</h1>
 
-{% for hall in halls %}
-<section>
-  <div>
-    <img src="{{hall.imageUrl}}" alt="Sifax Lecture theather" />
-  </div>
+{% extends "base.html" %}
+{% block content %}
 
-  <div>
-    <h2>Hall name: {{hall.name}}</h2>
-    <p>Hall location: {{hall.location}}</p>
-    <h3><a href="{% url 'single-hall' hall.id %}"> Check {{hall.name}} schedule</a></h3>
+<body>
+  <section class="row tm-banner-row tm-banner-row-header">
+      <div class="container">
+          <div class="row">
+              <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+                  <h2 class="text-uppercase mb-4"> <strong> Great Ladokite </strong> <br> <strong> Greatest Ladokite </strong> <br> <p class="mb-4"> Intergrity and Service.</p>  </h2>
+                           
+              </div>
+          </div>
+      </div>
+  </section>
 
-  </div>
+
+  <section class="p-5 tm-container-outer tm-bg-gray">
+        <div class="row">
+            <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">    
+
+                  
+                    <a href=" {% url 'create-hall' %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary"> <strong>Add Hall</strong> </a>
+                                  
+            </div>
+        </div>
+  
 </section>
 
 
-{% endfor %}
 
-{% if messages %}
-{% for message in messages  %}
-{{ message }}
-{% endfor %}
-{% endif %}
+
+  {% for hall in halls %}
+  <div class="tm-container-outer" id="tm-section-2">
+      <section class="tm-slideshow-section">
+          <div class="tm-slideshow">
+
+              <img src="{{hall.imageUrl}}" alt="{{hall.name}} Image">    
+          </div>
+          <div class="tm-slideshow-description tm-bg-primary">
+              <h2 class="">{{hall.name}}</h2>
+              <p> {{hall.location|slice:'250'|linebreaksbr}} </p>
+              <a href=" {% url 'single-hall' hall.id %} " class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary"> Check {{hall.name}} schedule </a>
+          </div>
+      </section>
+     
+  </div>      
+  {% endfor %}  
+
+{% endblock  %}

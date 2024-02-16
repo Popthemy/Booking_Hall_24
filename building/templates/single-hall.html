@@ -1,32 +1,70 @@
-<h1>This is single hall template.....</h1>
 
 
-<section>
-  <div>
-    <img src="{{hall.imageUrl}}" alt="Sifax Lecture theather" />
-  </div>
+{% extends "base.html" %}
+{% block content %}
 
-  <div>
-    <h2>Hall name: {{hall.name}}  </h2>
-    <p>Hall location: {{hall.location}}</p>
-    <h3><a href="{% url "pre-schedule" hall.id %}"> Book {{hall.name}} </a></h3>
+<body>
+  <div class="tm-container-outer" id="tm-section-2">
+      <section class="tm-slideshow-section">
+          <div class="tm-slideshow">
+
+              <img src="{{hall.imageUrl}}" alt="{{hall.name}} Image">    
+          </div>
+          <div class="tm-slideshow-description tm-bg-primary">
+              <h2 class="">{{hall.name}}</h2>
+              <p> {{hall.location|slice:'250' |linebreaksbr}} </p>
+              <a href="{% url "pre-schedule" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  Book {{hall.name}} </a>
+              <a href="{% url "delete-hall" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">  Delete {{hall.name}} </a>
+          </div>
+      </section>
+  </div>  
+  
+
+<section class="row tm-banner-row tm-banner-row-header">
+  <div class="container">
+      <div class="row">
+        
+          <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+              <h2 class="text-uppercase mb-4"> Scheduled classes at <strong>{{hall.name}}</strong>  </h2>
+           
+          </div>
+      </div>
   </div>
 </section>
 
 
-<div> <h2>Find the details for the courses schedule at {{hall.name}}</h2> </div>
-
-
-{% for schedule in hall_schedules  %}
-<div>
-
-<h3> Date: {{schedule.pre_schedule.date}} </h3>
-<h3> Course: {{schedule.pre_schedule.course}} </h3>
-
-<h3> Class Start from: {{schedule.start_time_display}} to {{schedule.end_time_display}} </h2>
-
-<p> Course information: {{schedule.course_information}} </p>
-<hr>
-
+<div class="tab-content clearfix">
+                	
+<!-- Tab 1 -->
+  <div class="tab-pane fade show active" id="1a">
+    
+      <div class="tm-recommended-place-wrap">
+        {% for schedule in hall_schedules  %}
+          <div class="tm-recommended-place">
+              <div class="tm-recommended-description-box">
+                  <h3 class="tm-recommended-title">Course: {{schedule.pre_schedule.course}} <br>  Date: {{schedule.pre_schedule.date}}</h3>
+                  <p class="tm-text-highlight"> Class Starts from: {{schedule.start_time_display}} to {{schedule.end_time_display}}</p>
+                  {% if schedule.course_information %}
+                  <p class="tm-text-gray">Course information: <br>{{schedule.course_information | slice:'30'|linebreaksbr}}...</p> 
+                  {% endif %}  
+              </div>
+              <a href="#" class="tm-recommended-price-box">
+                  <p class="tm-recommended-price"></p>
+                  <p class="tm-recommended-price-link">Edit Schedule</p>
+              </a>                        
+          </div>
+          {% endfor %}  
+      </div>      
+                      
+  </div> <!-- tab-pane -->
+  
+ 
 </div>
-{% endfor %}
+
+
+{% endblock  %}
+
+
+
+
+
