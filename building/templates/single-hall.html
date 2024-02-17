@@ -25,8 +25,11 @@
       <div class="row">
         
           <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+            {% if hall_schedules %}
               <h2 class="text-uppercase mb-4"> Scheduled classes at <strong>{{hall.name}}</strong>  </h2>
-           
+              {% else %}
+              <h2 class="text-uppercase mb-4"> No Scheduled classes at <strong>{{hall.name}}</strong>  </h2>
+              {% endif %}
           </div>
       </div>
   </div>
@@ -48,7 +51,8 @@
                   <p class="tm-text-gray">Course information: <br>{{schedule.course_information | slice:'30'|linebreaksbr}}...</p> 
                   {% endif %}  
               </div>
-              <a href="#" class="tm-recommended-price-box">
+
+              <a href="{% url 'edit-preschedule' schedule.pre_schedule.id %}" class="tm-recommended-price-box">
                   <p class="tm-recommended-price"></p>
                   <p class="tm-recommended-price-link">Edit Schedule</p>
               </a>                        

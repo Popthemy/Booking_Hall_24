@@ -25,7 +25,7 @@ def createHall(request):
     forms = HallForm()
 
     if request.POST:
-        forms = HallForm(request.POST)
+        forms = HallForm(request.POST,request.FILES)
         if forms.is_valid():
             hall_form = forms.save(commit=False)
             hall_form.name = hall_form.name.upper()
