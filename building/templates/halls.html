@@ -1,47 +1,108 @@
-
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <body>
   <section class="row tm-banner-row tm-banner-row-header">
-      <div class="container">
-          <div class="row">
-              <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
-                  <h2 class="text-uppercase mb-4"> <strong> Great Ladokite </strong> <br> <strong> Greatest Ladokite </strong> <br> <p class="mb-4"> Intergrity and Service.</p>  </h2>
-                           
-              </div>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+          <h2 class="text-uppercase mb-4">
+            <strong> Great Ladokite </strong> <br />
+            <strong> Greatest Ladokite </strong> <br />
+            <p class="mb-4">Intergrity and Service.</p>
+          </h2>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="p-5 tm-container-outer tm-bg-gray">
+    <div class="container">
+      <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+        <a
+          href=" {% url 'create-hall' %}"
+          class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary"
+        >
+          <strong>Add Hall</strong>
+        </a>
+      </div>
+
+      <!-- search tab  -->
+      <div class="row tm-banner-row" id="tm-section-search">
+        <form
+          action="{% url 'all-halls' %}"
+          method="GET"
+          class="tm-search-form tm-section-pad-2"
+        >
+          <div class="form-row tm-search-form-row">
+            <div
+              class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
+            >
+              <label for="inputCity">Search Hall</label>
+              <input
+                class="form-control"
+                id="inputCity"
+                name="search_query"
+                type="text"
+                value="{{search_query}}"
+                placeholder="Search by hall title"
+              />
+            </div>
+          </div>
+          <!-- form-row -->
+
+          <div
+            class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
+          >
+            <label for="btnSubmit">&nbsp;</label>
+            <button
+              type="submit"
+              class="btn btn-primary tm-btn tm-btn-search text-uppercase"
+              id="btnSubmit"
+            >
+              Find Hall
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- row -->
+    </div>
   </section>
 
 
-  <section class="p-5 tm-container-outer tm-bg-gray">
-        <div class="row">
-            <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">    
-                    <a href=" {% url 'create-hall' %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary"> <strong>Add Hall</strong> </a>
-            </div>
-        </div>
+
+  {% for hall in halls %} 
   
-</section>
 
-
-
-
-  {% for hall in halls %}
   <div class="tm-container-outer" id="tm-section-2">
-      <section class="tm-slideshow-section">
-          <div class="tm-slideshow">
 
-              <img src="{{hall.imageUrl}}" alt="{{hall.name}} Image">    
-          </div>
-          <div class="tm-slideshow-description tm-bg-primary">
-              <h2 class="">{{hall.name}}</h2>
-              <p> {{hall.location|slice:'250'|linebreaksbr}} </p>
-              <a href=" {% url 'single-hall' hall.id %} " class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary"> Check {{hall.name}} schedule </a>
-          </div>
-      </section>
-     
-  </div>      
-  {% endfor %}  
+    
+    <section  class="tm-slideshow-section {% if forloop.counter0|divisibleby:2 %}   {% else %} clearfix tm-slideshow-section tm-slideshow-section-reverse {% endif %} " >
+    <div  class="tm-slideshow  {% if forloop.counter0|divisibleby:2 %} {% else %} tm-right tm-slideshow tm-slideshow-highlight {% endif %} " > 
+        <img
+          class="tm-image"
+          src="{{hall.imageUrl}}"
+          alt="{{hall.name}} Image"
+        />
+      </div>
 
-{% endblock  %}
+    
+        <div class="tm-slideshow-description tm-bg-primary  {% if forloop.counter0|divisibleby:2 %}  {% else %} tm-slideshow-description tm-slideshow-description-left tm-bg-highlight  {% endif %} "  >
+    
+        <h2 class="">{{hall.name}}</h2>
+        <p>{{hall.location|slice:'250'|linebreaksbr}}</p>
+        <a
+          href=" {% url 'single-hall' hall.id %} "
+         
+          class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary {% if forloop.counter0|divisibleby:2 %}  {% else %} text-uppercase tm-btn tm-btn-white tm-btn-white-highlight {% endif %}"
+        >
+          Check {{hall.name}} schedule
+        </a>
+      </div>
+    </section>
+    
+  </div>
+
+  {% endfor %}
+  {% include "pagination.html" with query_set=halls query=search_query %}
+  {% endblock %}
+</body>

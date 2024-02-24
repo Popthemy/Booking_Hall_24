@@ -23,9 +23,24 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/">Hall</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Log in/ Sign Up</a>
-                                </li>
+                                
+                                
+                                {% if request.user.is_authenticated %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'logout-rep' %}">Log out</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'dashboard' %}">My Dashboard</a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'login-rep' %}">Log in</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'register-rep' %}">Sign Up</a>
+                                    </li>
+                                
+                                {% endif %}
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Contact Us</a>
                                 </li>

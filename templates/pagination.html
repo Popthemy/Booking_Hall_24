@@ -1,0 +1,27 @@
+{% if query_set.has_other_pages %}
+<section class="p-5 tm-container-outer tm-bg-gray">
+  <div class="container">
+    <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+      {% if query_set.has_previous %}
+      <a
+        href="?page={{ query_set.previous_page_number}} {% if query %}&q={{query}} {% endif %} "
+        class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary"
+      >
+        <strong> &laquo; Prev </strong>
+      </a>
+      {% endif %}
+
+      <span> {{ query_set.number}} of {{ query_set.paginator.num_pages}} </span>
+
+      {% if query_set.has_next %}
+      <a
+        href="?page={{ query_set.next_page_number}} {% if query %}&q={{query}} {% endif %} "
+        class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary"
+      >
+        <strong> &raquo; Next </strong>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}

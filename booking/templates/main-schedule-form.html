@@ -26,7 +26,7 @@
                         <form  method="POST" class="tm-search-form tm-section-pad-2">
 
                           {% csrf_token %}
-                          {% for field in forms %}
+                          {% for field in form %}
                             <div class="form-row tm-search-form-row">
                                 <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                                     <label for="inputCity">{{field.label}}</label>

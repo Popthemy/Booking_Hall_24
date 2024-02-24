@@ -106,7 +106,7 @@ p:last-child { margin-bottom: 0; }
 }
 
 .navbar-toggler { 
-    border-color: rgb(104, 199, 187);
+    border-color: #bf9f62;
     border-radius: 0;
     cursor: pointer;
 }
@@ -245,9 +245,13 @@ label { font-weight: 700; }
 }
 
 .tm-slideshow { width: 50%;
+   
 
  }
-
+.tm-image {
+    width: 700px;
+    height: 500px;
+}
 
 
 .tm-slideshow-description {

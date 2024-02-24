@@ -3,23 +3,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-<body>
+
   <div class="tm-container-outer" id="tm-section-2">
       <section class="tm-slideshow-section">
           <div class="tm-slideshow">
 
-              <img src="{{hall.imageUrl}}" alt="{{hall.name}} Image">    
+              <img class='tm-image' src="{{hall.imageUrl}}" alt="{{hall.name}} Image">    
           </div>
           <div class="tm-slideshow-description tm-bg-primary">
               <h2 class="">{{hall.name}}</h2>
-              <p> {{hall.location|slice:'250' |linebreaksbr}} </p>
-              <a href="{% url "pre-schedule" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  Book {{hall.name}} </a>
-              <a href="{% url "delete-hall" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">  Delete {{hall.name}} </a>
+              <p> {{hall.location|slice:'300' |linebreaksbr}} </p>
+                <a href="{% url "pre-schedule" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  Book {{hall.name}} </a>
+
+                {% if request.user.is_authenticated %}
+                <a href="{% url "delete-hall" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">  Delete {{hall.name}} </a>
+              {% endif %}
           </div>
       </section>
   </div>  
   
-
 <section class="row tm-banner-row tm-banner-row-header">
   <div class="container">
       <div class="row">
@@ -46,7 +48,8 @@
           <div class="tm-recommended-place">
               <div class="tm-recommended-description-box">
                   <h3 class="tm-recommended-title">Course: {{schedule.pre_schedule.course}} <br>  Date: {{schedule.pre_schedule.date}}</h3>
-                  <p class="tm-text-highlight"> Class Starts from: {{schedule.start_time_display}} to {{schedule.end_time_display}}</p>
+                  <p class="tm-text-highlight"> Class Starts from: {{schedule.start_time_display}} to {{schedule.end_time_display}} <br>  Class Scheduled by: {{schedule.rep_profile.username}} {{ schedule.rep_profile.conttact_info}}</p>
+                  <p class="tm-text-highlight"></p>
                   {% if schedule.course_information %}
                   <p class="tm-text-gray">Course information: <br>{{schedule.course_information | slice:'30'|linebreaksbr}}...</p> 
                   {% endif %}  

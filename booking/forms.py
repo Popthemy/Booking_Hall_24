@@ -30,10 +30,9 @@ class MainScheduleForm(forms.ModelForm):
     class Meta:
         model = MainSchedule
         fields = '__all__'
-        exclude = ['pre_schedule']
+        exclude = ['pre_schedule', 'rep_profile']
 
         widgets = {
-            # 'start_time': forms.TextInput(attrs={'class': 'form-control'}),
             'course_information': forms.Textarea(attrs={'placeholder': 'Enter information to tag with this booking i.e assignment , test coming up or ....', 'class': 'form-control'}),
         }  # changing the type and class of field
 

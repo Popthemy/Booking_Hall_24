@@ -9,17 +9,16 @@ usage of receiver '@receiver(method, sender="the model sending the request")
 """
 
 from django.db.models.signals import pre_save
-from .models import MainSchedule
 from django.dispatch import receiver
 from django.core.exceptions import ValidationError
 
+from .models import MainSchedule
 from .book_core import course_span_conflict
 
 MIN_TIME, MAX_TIME = 7, 19
 
 
 def validate_schedule_time(instance):
-
     if not (MIN_TIME <= instance.start_time < instance.end_time <= MAX_TIME):
         raise ValidationError(
             f'Invalid schedule times: start= {instance.start_time_display}  must be before end= {instance.end_time_display} for a valid schedule')
@@ -48,14 +47,11 @@ def check_course_span_conflict(instance):
     already_exist = course_span_conflict(
         starts=start, ends=end, start_end=booked_time)
     
-    if hall_date:
-        raise ValidationError(
-            f'There is a prior schedule for { hall.name } with the specified details before.')
-
     if already_exist:
         raise ValidationError(
             f'There is a class scheduled in between {main_schedule.start_time_display} to {main_schedule.end_time_display} at {hall.name} with the specified details before check the sifax hall to see all schedules.')
-    
+
+
 
 @receiver(pre_save, sender=MainSchedule)
 def date_time_hallUnique(sender, instance, **kwargs):
