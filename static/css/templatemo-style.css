@@ -182,6 +182,18 @@ label { font-weight: 700; }
 .tm-form-group-3 { width: 25%; }
 .form-control { border-radius: 0; }
 
+.boolean-field input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #bf9f62 ;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.boolean-field input[type="checkbox"]:checked {
+    
+    background-color: #de211b;
+    border: 2px solid #bf9f62 ;
+}
 .tm-btn {
     cursor: pointer;
     display: inline-block;

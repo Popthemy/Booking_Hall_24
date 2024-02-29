@@ -1,6 +1,5 @@
 {% extends "base.html" %} {% block content %}
 
-<body>
   <section class="row tm-banner-row tm-banner-row-header">
     <div class="container">
       <div class="row">
@@ -17,6 +16,7 @@
 
   <section class="p-5 tm-container-outer tm-bg-gray">
     <div class="container">
+      {% if request.user.is_authenticated %}
       <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
         <a
           href=" {% url 'create-hall' %}"
@@ -25,6 +25,7 @@
           <strong>Add Hall</strong>
         </a>
       </div>
+      {% endif %}
 
       <!-- search tab  -->
       <div class="row tm-banner-row" id="tm-section-search">
@@ -84,7 +85,6 @@
           alt="{{hall.name}} Image"
         />
       </div>
-
     
         <div class="tm-slideshow-description tm-bg-primary  {% if forloop.counter0|divisibleby:2 %}  {% else %} tm-slideshow-description tm-slideshow-description-left tm-bg-highlight  {% endif %} "  >
     
@@ -105,4 +105,3 @@
   {% endfor %}
   {% include "pagination.html" with query_set=halls query=search_query %}
   {% endblock %}
-</body>

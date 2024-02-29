@@ -23,7 +23,7 @@ class PreSchedule(models.Model):
 
 class MainSchedule(models.Model):
     # custom time range from 7 to 7
-    TIME_CHOICES = [ (H, f'{H-12}:00 PM') if H > 12 else (H, f'{H}:00 AM') for H in range(7, 20) ]
+    TIME_CHOICES = [ (H, f'{H-12 if H >12 else 12}:00 PM') if H >= 12 else (H, f'{H}:00 AM') for H in range(7, 20) ]
 
     rep_profile = models.ForeignKey(RepProfile, null=True , on_delete=models.CASCADE )
     pre_schedule = models.OneToOneField(PreSchedule, on_delete=models.CASCADE)

@@ -14,7 +14,7 @@ def dynamic_time_choices(start_end):
 
 
     # total range of time for a day
-    TIME_CHOICES = [(H, f'{H-12}:00 PM') if H > 12 else (H, f'{H}:00 AM') for H in range(MIN_TIME , MAX_TIME)]
+    TIME_CHOICES = [(H, f'{H-12 if H >12 else 12  }:00 PM') if H >= 12 else (H, f'{H}:00 AM') for H in range(MIN_TIME , MAX_TIME)]
 
     # total duration of already booked classes gotten from start_end, since when a class ends a class can start we don't need the stop time
     unavailable_time = set( )

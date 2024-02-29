@@ -28,17 +28,19 @@ class RepCustomUserForm(auth_forms.UserCreationForm):
 class RepProfileForm(forms.ModelForm):
     class Meta:
         model = RepProfile
-        fields = ['first_name', 'last_name', 'email','username', 'level','contact_info', 'bio' ] 
+        fields = ['first_name', 'last_name', 'email','username', 'level','contact_info', 'bio' , 'i_am_a_rep'] 
         widgets = {
             'first_name': forms.TextInput(attrs={'placeholder': 'Enter your first name as on your course form...', 'class': 'form-control'}),
             'last_name': forms.TextInput(attrs={'placeholder': 'Enter your last name as on your course form...', 'class': 'form-control'}),
             'username': forms.TextInput(attrs={'placeholder': 'Enter your username...', 'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Enter your email address...', 'class': 'form-control'}),
             'bio': forms.Textarea(attrs={'placeholder': 'Enter your department and other other details...', 'class': 'form-control'}),
+            'i_am_a_rep': forms.CheckboxInput(attrs={ 'class': 'boolean-field'}),
         }
 
     def __init__(self, *args, **kwargs):
         super(RepProfileForm,self).__init__(*args, **kwargs)
 
         for name, field in self.fields.items():
-            field.widget.attrs.update({'class':'form-control'})
+            if name != 'i_am_a_rep':
+                field.widget.attrs.update({'class':'form-control'})

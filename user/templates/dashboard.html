@@ -7,20 +7,26 @@
         <div class="row">
           
             <div class="col-xs-12 tm-slideshow-description tm-bg-primary mx-auto tm-about-text-wrap text-center">
+            
               <h1 class='md-4'>Welcome {{rep_profile.first_name}} {{rep_profile.last_name}}</h1>
-
+              {% if request.user.repprofile.i_am_a_rep %} 
+                <p class="tm-text-highlight">Status : Class Rep</p>
+              {% else %}
+              <p class="tm-text-highlight">Status : Not a class rep</p>
+              {% endif %}
             <h2 class="md-4">Bio: {{rep_profile.bio}} </h2>
             <h2 class="md-4">Level: {{rep_profile.level_display}} </h2>
             <h2 class="md-4">Contact: {{rep_profile.contact_info}} </h2>
-            <p> {{hall.location|slice:'300' |linebreaksbr}} </p>
+            <p> {{hall.location|truncatewords:'300' |linebreaksbr}} </p>
             {% if request.user.is_authenticated %} 
               <a href="{% url 'edit-rep-profile' %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  edit profile </a>
+              <a href="{% url 'rep_change_password' %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  Change Password</a>
+
             {% endif %}
             </div>
         </div>
     </div>
 </section>
-
 
 <section class="row tm-banner-row tm-banner-row-header">
     <div class="container">
@@ -49,9 +55,8 @@
                     <h5 class="tm-recommended-title">{{ schedule.pre_schedule.course }}</h5>
                     <p class="card-text">Date: {{ schedule.pre_schedule.date }} <br> Time: {{ schedule.start_time_display }} - {{ schedule.end_time_display }}</p>
                     
-                    
                     {% if schedule.course_information %}
-                        <p class="tm-text-highlight">{{ schedule.course_information | slice:'30' | linebreaksbr }}</p>
+                        <p class="tm-text-highlight">{{ schedule.course_information|slice:'300' | truncatewords:'20' | linebreaksbr }}</p>
                     {% endif %}
                     <a href="{% url 'edit-preschedule' schedule.pre_schedule.id %}" class="btn btn-primary">Edit Schedule</a>
                 </div>
@@ -60,7 +65,5 @@
         {% endfor %}
     </div>
 </div>
-
-
 
 {% endblock content %}

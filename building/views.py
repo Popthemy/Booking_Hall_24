@@ -62,3 +62,4 @@ def deleteHall(request, pk):
 
     context = {'hall': hall}
     return render(request, 'delete-hall.html', context)
+
