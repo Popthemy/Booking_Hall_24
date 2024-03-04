@@ -74,23 +74,24 @@
   <div class="tm-container-outer" id="tm-section-2">
 
     
-    <section  class="tm-slideshow-section {% if forloop.counter0|divisibleby:2 %}   {% else %} clearfix tm-slideshow-section tm-slideshow-section-reverse {% endif %} " >
-    <div  class="tm-slideshow  {% if forloop.counter0|divisibleby:2 %} {% else %} tm-right tm-slideshow tm-slideshow-highlight {% endif %} " > 
-        <img
-          class="tm-image"
-          src="{{hall.imageUrl}}"
-          alt="{{hall.name}} Image"
-        />
-      </div>
+    <section  class="tm-slideshow-section {% if forloop.counter|divisibleby:2 %}   {% else %} clearfix tm-slideshow-section tm-slideshow-section-reverse {% endif %} " >
+        
+        <div  class="tm-slideshow  {% if forloop.counter|divisibleby:2 %} {% else %} tm-right tm-slideshow tm-slideshow-highlight {% endif %} " > 
+            <img
+              class="tm-image"
+              src="{{hall.imageUrl}}"
+              alt="{{hall.name}} Image"
+            />
+        </div>
     
-        <div class="tm-slideshow-description tm-bg-primary  {% if forloop.counter0|divisibleby:2 %}  {% else %} tm-slideshow-description tm-slideshow-description-left tm-bg-highlight  {% endif %} "  >
+        <div class="tm-slideshow-description tm-bg-primary  {% if forloop.counter|divisibleby:2 %}  {% else %} tm-slideshow-description tm-slideshow-description-left tm-bg-highlight  {% endif %} "  >
     
         <h2 class="">{{hall.name}}</h2>
         <p>{{hall.location|linebreaksbr |slice:'250' }}</p>
         <a
           href=" {% url 'single-hall' hall.id %} "
          
-          class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary {% if forloop.counter0|divisibleby:2 %}  {% else %} text-uppercase tm-btn tm-btn-white tm-btn-white-highlight {% endif %}"
+          class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary {% if forloop.counter|divisibleby:2 %}  {% else %} text-uppercase tm-btn tm-btn-white tm-btn-white-highlight {% endif %}"
         >
           Check {{hall.name}} schedule
         </a>
