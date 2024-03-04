@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+
+import cloudinary
+# import cloudinary_storage
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +29,7 @@ SECRET_KEY = 'django-insecure-@=tt4_$^!g2lz288$j_+!5ug87%nctd%+ff=pxi7hxtb-1y^+g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'localhost:800']
 
 
 # Application definition
@@ -42,6 +46,8 @@ INSTALLED_APPS = [
     'about_us.apps.AboutUsConfig',
     'user.apps.UserConfig',
     'phonenumber_field',
+    'cloudinary',
+    'cloudinary_storage',
 
 
 ]
@@ -49,11 +55,15 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware', #for static files when Debug=False
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'Book_hall.urls'
@@ -79,17 +89,34 @@ WSGI_APPLICATION = 'Book_hall.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-# for postgres
-DATABASES = {
-    'default': {
+
+# for postgres offline
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Book_hall',
+#         'USER': 'postgres',
+#         'PASSWORD': 'leebackendengine',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+# railway postgres Db
+
+
+DATABASES ={'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Book_hall',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'leebackendengine',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'PASSWORD': 'G4A5dfeebG1beec1*1egbFeF6A3bEFde',
+        'HOST': 'roundhouse.proxy.rlwy.net',  # or the IP address of your PostgreSQL server
+        'PORT': '54041',       # the default PostgreSQL port
     }
-}
+    }
+
+
+
 # for sqlite
 # DATABASES = {
 #     'default': {
@@ -132,12 +159,26 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+# cloudinary details
+# CLOUDINARY_STORAGE = {
+#   'CLOUD_NAME': 'dtbf1jnph',
+#   'API_KEY': '789776388615556',
+#   'API_SECRET': 'L7Ln7dU37qWH0gt-O3E1wByvDVU',
+# }
 
+cloudinary.config(
+    cloud_name="dtbf1jnph",
+    api_key="789776388615556",
+    api_secret="L7Ln7dU37qWH0gt-O3E1wByvDVU"
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATIC_URL = 'static/'
 MEDIA_URL = ''
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'general_static'
 
 
 # Default primary key field type

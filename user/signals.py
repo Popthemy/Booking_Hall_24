@@ -50,7 +50,7 @@ def rep_status_confirm_default(sender, created,instance, **kwargs ):
         try: 
             rep_profile = RepProfile.objects.get(email=instance.email)
           
-            print(rep_profile.i_am_a_rep)
+            
             rep_profile.i_am_a_rep = True
             rep_profile.save()
         except rep_profile.DoesNotExist:
@@ -62,9 +62,9 @@ def remove_rep_status(sender,instance,**kwargs):
     try:
         rep_profile = RepProfile.objects.get(email=instance.email)
         
-        print(rep_profile.i_am_a_rep)
         if rep_profile.i_am_a_rep:
             rep_profile.i_am_a_rep = False
             rep_profile.save()
+            
     except rep_profile.DoesNotExist:
         pass

@@ -8,8 +8,8 @@ class HallForm(forms.ModelForm):
         model = Hall
         fields = '__all__'
         widgets = {
-            'location': forms.TextInput(attrs={'placeholder': 'Enter a short description of the hall location'}),
-            'name': forms.TextInput(attrs={'placeholder': 'Enter the name of the hall'}),
+            'location': forms.Textarea(attrs={'placeholder': 'Enter a short description of the hall location', 'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Enter the name of the hall' ,'class': 'form-control'}),
         }
         
 

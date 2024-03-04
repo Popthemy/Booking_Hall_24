@@ -21,7 +21,8 @@
           enctype="multipart/form-data"
           class="tm-search-form tm-section-pad-2"
         >
-          {% csrf_token %} {% for field in form %}
+          {% csrf_token %} 
+          {% for field in form %}
           <div class="form-row tm-search-form-row">
             <div
               class="form-group tm-form-group tm-form-group-pad tm-form-group-1"

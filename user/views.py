@@ -22,7 +22,7 @@ def create_rep(request):
         if form.is_valid():
             try:
                 rep_instance = form.save(commit=False)
-                rep_instance.username = rep_instance.username.strip().capitalize()
+                rep_instance.username = rep_instance.username.strip().lower()
 
                 rep_instance.save()
                 message = 'Account successfully created!'
@@ -41,9 +41,14 @@ def create_rep(request):
 
 def login_rep(request):
     page = 'login'
+    if request.user.is_authenticated:
+        # in case a user is authenticated already
+        message = 'You can check halls for schedules.. '
+        messages.info(request,message)
+        return redirect('/')
     
     if request.method == 'POST':
-        username = request.POST.get('username').strip().capitalize()
+        username = request.POST.get('username').strip().lower()
         password = request.POST.get('password')
 
         user = authenticate(request, username=username,password=password)
@@ -82,10 +87,10 @@ def edit_rep_profile(request):
         if form.is_valid():
             try:
                 edited_rep_form = form.save(commit=False)
-                edited_rep_form.username = edited_rep_form.username.strip().capitalize()
+                edited_rep_form.username = edited_rep_form.username.strip().lower()
                 
                 if edited_rep_form.i_am_a_rep:
-                    print(' i was called' )
+                    
                     edited_rep_form.i_am_a_rep = rep_status(request,edited_rep_form)
                 
                 

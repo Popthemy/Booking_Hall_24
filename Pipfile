@@ -9,6 +9,8 @@ black = "*"
 pillow = "*"
 psycopg2 = "*"
 django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
+cloudinary = "*"
+django-cloudinary-storage = "*"
 
 [dev-packages]
 

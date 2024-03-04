@@ -11,16 +11,19 @@
               <img class='tm-image' src="{{hall.imageUrl}}" alt="{{hall.name}} Image">    
           </div>
 
-          <div class="tm-slideshow-description tm-bg-primary">
+            <div class="tm-slideshow-description tm-bg-primary">
               <h2 class="">{{hall.name}}</h2>
               <p> {{hall.location|slice:'300' |linebreaksbr}} </p>
 
-              {% if request.user.repprofile.i_am_a_rep%}
-                  <a href="{% url "pre-schedule" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  Book {{hall.name}} </a>
+                {% if request.user.repprofile.i_am_a_rep %}
+                    <a href="{% url "pre-schedule" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  Book {{hall.name}} </a>
+                {% endif %}
 
-                  <a href="{% url "delete-hall" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">  Delete {{hall.name}} </a>
-              {% endif %}
-          </div>
+                {% if request.user.is_superuser %}
+                    <a href="{% url "delete-hall" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">  Delete {{hall.name}} </a>
+                {% endif %}
+             
+            </div>
       </section>
   </div>  
 
