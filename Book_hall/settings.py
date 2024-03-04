@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-@=tt4_$^!g2lz288$j_+!5ug87%nctd%+ff=pxi7hxtb-1y^+g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS =    [ 'localhost', '127.0.0.1', 'localhost:800','bookinghall24-production.up.railway.app' ] 
+ALLOWED_HOSTS =    [ '0.0.0.0:5578' ,'localhost', '127.0.0.1', 'localhost:800'] 
 
 
 # Application definition
