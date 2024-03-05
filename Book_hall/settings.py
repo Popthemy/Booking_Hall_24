@@ -191,4 +191,4 @@ EMAIL_HOST_USER = 'leebackgreen'
 EMAIL_HOST_PASSWORD = 'mbkw nang droc pabt'
 
 # for csrf token 
-CSRF_TRUSTED_ORIGIN = ["https://bookinghall24-production.up.railway.app/"]
+CSRF_TRUSTED_ORIGINS = ["https://bookinghall24-production.up.railway.app/"]
