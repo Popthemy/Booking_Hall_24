@@ -161,11 +161,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 # cloudinary details
-# CLOUDINARY_STORAGE = {
-#   'CLOUD_NAME': 'dtbf1jnph',
-#   'API_KEY': '789776388615556',
-#   'API_SECRET': 'L7Ln7dU37qWH0gt-O3E1wByvDVU',
-# }
 
 cloudinary.config(
     cloud_name="dtbf1jnph",
@@ -194,3 +189,6 @@ EMAIL_USE_SSL = True
 
 EMAIL_HOST_USER = 'leebackgreen'
 EMAIL_HOST_PASSWORD = 'mbkw nang droc pabt'
+
+# for csrf token 
+CSRF_TRUSTED_ORIGIN = ["https://bookinghall24-production.up.railway.app/"]
