@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@=tt4_$^!g2lz288$j_+!5ug87%nctd%+ff=pxi7hxtb-1y^+g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS =    [ '0.0.0.0' ,'localhost', '127.0.0.1', 'localhost:800', 'bookinghall24-production.up.railway.app' ] 
 
@@ -44,11 +44,11 @@ INSTALLED_APPS = [
     'building.apps.BuildingConfig',
     'booking.apps.BookingConfig',
     'about_us.apps.AboutUsConfig',
+    'my_admin.apps.MyAdminConfig',
     'user.apps.UserConfig',
     'phonenumber_field',
     'cloudinary',
     'cloudinary_storage',
-
 
 ]
 
@@ -103,9 +103,7 @@ WSGI_APPLICATION = 'Book_hall.wsgi.application'
 #     }
 # }
 
-# railway postgres Db
-
-
+# railway postgres Db online
 DATABASES ={'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',

@@ -1,14 +1,13 @@
 {% extends "base.html" %} 
 {% block content %}
 
-
 <section class="tm-banner">
   <div class="tm-container-outer tm-banner-bg">
     <div class="container">
       <div class="row tm-banner-row tm-banner-row-header">
         <div class="col-xs-12">
           <div class="tm-banner-header">
-            <h1 class="text-uppercase tm-banner-title">Delete Hall</h1>
+            <h1 class="text-uppercase tm-banner-title">Delete Rep</h1>
             <img src="/static/images/dots-3.png" alt="Dots" />
           </div>
         </div>
@@ -17,21 +16,20 @@
       <!-- row -->
       <div class="row tm-banner-row" id="tm-section-search">
         <form method="POST" class="tm-search-form tm-section-pad-2" >
+
           {% csrf_token %} 
           <div class="form-row tm-search-form-row">
             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-              <label for="inputCity"> Do you realy want to delete {{hall.name}}</label>
-              <p class="mb-4 tm-btn-white-highlight">Note: Deleting this hall also delete all schedule attached to it.</p>
+              <label for="inputCity"> Do you realy want to delete {{rep.first_name}}</label>
+              <p class="mb-4 tm-btn-white-highlight">Note: Deleting this rep details means he won't be able to schedule class anymore.</p>
             
-      
             </div>
           </div>
           <!-- form-row -->
-          
 
           <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1" >
             <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">
-              Delete hall
+              Delete Rep
             </button>
           </div>
         </form>
@@ -46,3 +44,4 @@
 
 
 {% endblock %}
+``

@@ -266,8 +266,10 @@ label { font-weight: 700; }
 
  }
 .tm-image {
-    width: 700px;
-    height: 500px;
+    width: 75%;
+    max-width: 700px;
+    object-fit: contain;
+    object-position: center;
 }
 
 
@@ -277,6 +279,8 @@ label { font-weight: 700; }
     width: 48%;
     z-index: 100;
     margin-left: -42px;
+   
+
 }
 
 .tm-slideshow-description-left {

@@ -1,12 +1,8 @@
 from django.contrib import admin
-from .models import RepProfile,DefaultRepList
+from .models import RepProfile
 
 # Register your models here.
 
-
-@admin.register(DefaultRepList)
-class DefualtRepListAdmin(admin.ModelAdmin):
-    pass
 
 @admin.register(RepProfile)
 class RepProfileAdmin(admin.ModelAdmin):

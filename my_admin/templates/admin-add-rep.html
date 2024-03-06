@@ -1,0 +1,71 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<!-- The profile of rep page  -->
+
+<section class="tm-banner">
+  <div class="tm-container-outer tm-banner-bg">
+    <div class="container">
+      <div class="row tm-banner-row tm-banner-row-header">
+        <div class="col-xs-12"></div>
+        <!-- col-xs-12 -->
+      </div>
+
+      <!-- row -->
+      <div class="row tm-banner-row" id="tm-section-search">
+        <div class="tm-search-form tm-section-pad-2 text-center">
+          
+          {% if page == 'adding' %}
+          <h3 class="text-uppercase mb-4">Add Rep</h3>
+          {% else %}
+          <h3 class="text-uppercase mb-4">Edit Rep</h3>
+          {% endif %}
+         
+        </div>
+
+        <div class="tm-search-form tm-section-pad-2">
+          <form method="POST" >
+            {% csrf_token %} 
+            {% for field in form %}
+            <div class="form-row tm-search-form-row">
+              <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                <label for="inputCity">{{field.label}}</label>
+
+                {{field}}
+
+              </div>
+            </div>
+            <!-- form-row -->
+
+            {% endfor %}
+
+            <div
+              class="form-group tm-form-group tm-form-group-pad tm-form-group-1" >
+              {% if page == 'adding' %}
+              <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit"> Add Rep to Platform</button>
+              {% else %}
+              <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit"> Edit Rep details</button>
+
+              {% endif %}
+            </div>
+
+          </form>
+
+          <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1" >
+            <a href="{% url 'dashboard' %}" >
+              <button class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit"> Go Back</button>
+            <a/>
+          </div>
+          
+        </div>
+
+      </div>
+      <!-- row -->
+      <div class="tm-banner-overlay"></div>
+    </div>
+    <!-- .container -->
+  </div>
+  <!-- .tm-container-outer -->
+</section>
+
+{% endblock %}

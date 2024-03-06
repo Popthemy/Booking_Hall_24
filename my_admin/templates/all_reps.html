@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<section class="row tm-banner-row tm-banner-row-header">
+  <div class="container">
+      <div class="row">
+        
+          <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+            {% if Reps_list %}
+              <h2 class="text-uppercase mb-4"><strong> All Reps you have added  </strong>  </h2>
+              {% else %}
+             
+              <h2 class="text-uppercase mb-4"><strong>You haven't added any rep yet!</strong></h2>
+              <p>Wait for Rep request.</p>
+              
+              {% endif %}
+          </div>
+      </div>
+  </div>
+</section>
+
+<div class="container mt-5">
+  <div class="row">
+      {% for rep in Reps_list %}
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="tm-recommended-title">{{rep.first_name }}</h5>
+                    <p class="card-text"> {{rep.last_name}} </p>
+                    <p class="card-text"> {{rep.email}} </p>
+                    
+                    <a href="{% url 'edit-rep-details' rep.id %}" class="btn btn-primary"> Edit{{rep.username}} details</a>
+                    <a href="{% url 'delete-rep-details' rep.id %}" class="btn btn-primary"> Delete{{rep.username}} details</a>
+
+                 
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+  </div>
+</div>
+{% endblock  %}

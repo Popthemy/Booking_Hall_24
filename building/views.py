@@ -53,7 +53,7 @@ def deleteHall(request, pk):
 
     hall = Hall.objects.get(pk=pk)
 
-    if request.POST:
+    if request.method == 'POST':
 
         hall.delete()
         message = 'You have succefully delete a hall.'

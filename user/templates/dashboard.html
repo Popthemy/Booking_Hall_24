@@ -21,8 +21,19 @@
             {% if request.user.is_authenticated %} 
               <a href="{% url 'edit-rep-profile' %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  edit profile </a>
               <a href="{% url 'rep_change_password' %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  Change Password</a>
-
+                
             {% endif %}
+
+            
+                {% if request.user.is_superuser %}
+                <p>
+                    <a href="{% url 'admin-add-rep' %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary"> Add New Rep</a>
+                    <a href="{% url 'all-reps' %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary"> View Rep</a>
+                <p>
+                    
+                {% endif %}
+            
+              
             </div>
         </div>
     </div>

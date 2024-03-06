@@ -8,7 +8,6 @@ from django.contrib.auth.forms import PasswordChangeForm
 from booking.models import MainSchedule
 from .forms import RepCustomUserForm, RepProfileForm
 from .utils import rep_status
-
     
 # Create your views here.
 
@@ -93,8 +92,6 @@ def edit_rep_profile(request):
                     
                     edited_rep_form.i_am_a_rep = rep_status(request,edited_rep_form)
                 
-                
-
                 edited_rep_form.save()
                 message = "Account successfully edited!. if you are a rep but have issue with i am a rep button contact us."
                 messages.success(request, message)
@@ -103,16 +100,20 @@ def edit_rep_profile(request):
             except IntegrityError as e:
                 message = f"Error editing account: {e}"
                 messages.error(request, message)
+                
+        else:
+            message = "Please kindly edit your account"
+            messages.info(request, message)
+       
 
     context = {'form': form}
-    return render(request, 'rep-profile.html', context)
+    return render(request, 'edit-profile.html', context)
 
 @login_required(login_url='login-rep')
 def rep_dashboard(request):
     rep_profile = request.user.repprofile
 
     schedules = MainSchedule.objects.filter(rep_profile=rep_profile)
-    
 
     context= {'rep_profile':rep_profile, 'schedules':schedules }
     return render(request, 'dashboard.html', context)
@@ -134,3 +135,5 @@ def rep_change_password(request):
     
     context = { 'form':form }
     return render(request, 'change_password.html' , context )
+
+

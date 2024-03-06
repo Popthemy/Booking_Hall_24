@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import RepProfile
 
+
 class RepCustomUserForm(auth_forms.UserCreationForm):
     class Meta:
         model = User
@@ -26,6 +27,7 @@ class RepCustomUserForm(auth_forms.UserCreationForm):
 
 
 class RepProfileForm(forms.ModelForm):
+
     class Meta:
         model = RepProfile
         fields = ['first_name', 'last_name', 'email','username', 'level','contact_info', 'bio' , 'i_am_a_rep'] 
@@ -36,6 +38,7 @@ class RepProfileForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'placeholder': 'Enter your email address...', 'class': 'form-control'}),
             'bio': forms.Textarea(attrs={'placeholder': 'Enter your department and other other details...', 'class': 'form-control'}),
             'i_am_a_rep': forms.CheckboxInput(attrs={ 'class': 'boolean-field'}),
+
         }
 
     def __init__(self, *args, **kwargs):
@@ -43,4 +46,6 @@ class RepProfileForm(forms.ModelForm):
 
         for name, field in self.fields.items():
             if name != 'i_am_a_rep':
+                self.fields['contact_info'].widget.attrs['placeholder'] = '+23400000000000'
                 field.widget.attrs.update({'class':'form-control'})
+

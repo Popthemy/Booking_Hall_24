@@ -1,4 +1,4 @@
-from .models import DefaultRepList 
+from my_admin.models import DefaultRepList 
 
 
 
