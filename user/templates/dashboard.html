@@ -12,7 +12,7 @@
               {% if request.user.repprofile.i_am_a_rep %} 
                 <p class="tm-text-highlight">Status : Class Rep</p>
               {% else %}
-              <p class="tm-text-highlight">Status : Not a class rep</p>
+              <h3 class="tm-text-highlight">Status : Not a class rep</h3>
               {% endif %}
             <h2 class="md-4">Bio: {{rep_profile.bio}} </h2>
             <h2 class="md-4">Level: {{rep_profile.level_display}} </h2>
