@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
 
     <title>Booking Schedule</title>
 
@@ -37,20 +38,25 @@
   </head>
 
   <body> 
-    {% include "nav-bar.html" %}
-    
-    <div>
-      {% if messages %} 
-      {% for message in messages %}
-      <script> alert(" {{ message }} " ) </script>
-       
-       {% endfor %}
-      {% endif %}
-    </div>
+      <main>
+      {% include "nav-bar.html" %}
+      
+      <div>
+        {% if messages %} 
+        {% for message in messages %}
+        <script> alert(" {{ message }} " ) </script>
+        
+        {% endfor %}
+        {% endif %}
+      </div>
 
-    {% block content %} {% endblock %}
+      {% block content %} {% endblock %}
+      
+    </main>
+    {% include "BK-footer.html" %}
+
   </body>
-  {% include "BK-footer.html" %}
+
 
   <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
 

@@ -68,12 +68,12 @@
 
 
 
-  {% for hall in halls %} 
+  
   
 
   <div class="tm-container-outer" id="tm-section-2">
 
-    
+    {% for hall in halls %} 
     <section  class="tm-slideshow-section {% if forloop.counter|divisibleby:2 %}   {% else %} clearfix tm-slideshow-section tm-slideshow-section-reverse {% endif %} " >
         
         <div  class="tm-slideshow  {% if forloop.counter|divisibleby:2 %} {% else %} tm-right tm-slideshow tm-slideshow-highlight {% endif %} " > 
@@ -93,11 +93,11 @@
         </a>
       </div>
     </section>
-    
+    {% endfor %}
   </div>
 
 </body>
 
-  {% endfor %}
+  
   {% include "pagination.html" with query_set=halls query=search_query %}
   {% endblock %}

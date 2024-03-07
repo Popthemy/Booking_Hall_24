@@ -266,8 +266,10 @@ label { font-weight: 700; }
 
  }
 .tm-image {
-    width: 700px;
-    height: 500px;
+    width: 100%;
+    max-width: 700px;
+    object-fit: contain;
+    object-position: center;
 }
 
 
@@ -277,6 +279,8 @@ label { font-weight: 700; }
     width: 48%;
     z-index: 100;
     margin-left: -42px;
+   
+
 }
 
 .tm-slideshow-description-left {
@@ -677,6 +681,10 @@ footer p { color: white; }
 }
 
 @media screen and (max-width: 767px) {
+    .tm-image{
+        max-width: 80%;
+        height: auto;
+    }
     .tm-banner-row {
         padding-top: 80px;
         padding-bottom: 50px;
@@ -689,4 +697,19 @@ footer p { color: white; }
     .tm-form-group-3 {
         width: 100%;
     }    
+
+    .tm-slideshow,
+    .tm-slideshow-description {
+    width: 100%;
+    max-width: none; /* Allow full width */
+    margin: 0 auto; /* Center align */
+    }
+    .tm-slideshow-description {
+        padding: 20px; /* Reduce padding for smaller screens */
+        font-size: 14px;
+    }
+    .tm-btn {
+        font-size: 0.7rem;
+        padding: 10px 15px;
+    }
 }

@@ -59,7 +59,7 @@
                   <p class="tm-text-highlight"> Class Starts from: {{schedule.start_time_display}} to {{schedule.end_time_display}} <br>  Class Scheduled by: {{schedule.rep_profile.username}} {{ schedule.rep_profile.conttact_info}}</p>
                   <p class="tm-text-highlight"></p>
                   {% if schedule.course_information %}
-                  <p class="tm-text-gray">Course information: <br>{{schedule.course_information | slice:'30'|linebreaksbr}}...</p> 
+                  <p class="tm-text-gray">Course information: <br>{{schedule.course_information | linebreaksbr}}...</p> 
                   {% endif %}  
               </div>
               {% if request.user.repprofile == schedule.rep_profile %}
