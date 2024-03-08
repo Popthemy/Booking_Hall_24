@@ -1,0 +1,54 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<section class="row tm-banner-row tm-banner-row-header">
+  <div class="container">
+      <div class="row">
+          <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+              <h2 class="text-uppercase mb-4"><strong> All scheduled class </strong>  </h2>
+           
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<div class="tab-content clearfix">
+                	
+<!-- Tab 1 -->
+  <div class="tab-pane fade show active" id="1a">
+    
+      <div class="tm-recommended-place-wrap">
+        {% for schedule in main_schedule  %}
+          <div class="tm-recommended-place">
+              <div class="tm-recommended-description-box">
+                  <h3 class="tm-recommended-title">Course: {{schedule.pre_schedule.course}} <br>  Date: {{schedule.pre_schedule.date}}</h3>
+                  <p class="tm-text-highlight"> Class Starts from: {{schedule.start_time_display}} to {{schedule.end_time_display}} <br> Hall: {{schedule.pre_schedule.hall}} </p>
+                  {% if schedule.course_information %}
+                  <p class="tm-text-gray">Course information: <br>{{schedule.course_information | slice:'30'|linebreaksbr}}...</p> 
+                  {% endif %}  
+              </div>
+              <a href="#" class="tm-recommended-price-box">
+                  <p class="tm-recommended-price"></p>
+                  <p class="tm-recommended-price-link">Edit Schedule</p>
+              </a>                        
+          </div>
+          {% endfor %}  
+      </div>      
+                      
+  </div> <!-- tab-pane -->
+  
+ 
+</div>
+
+
+{% endblock  %}
+
+
+
+
+

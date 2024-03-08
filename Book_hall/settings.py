@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@=tt4_$^!g2lz288$j_+!5ug87%nctd%+ff=pxi7hxtb-1y^+g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [ '0.0.0.0' ,'localhost', '127.0.0.1', 'localhost:800', 'bookinghall24-production.up.railway.app' ]
 

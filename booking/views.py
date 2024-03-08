@@ -112,4 +112,4 @@ def editMainSchedule(request,pk):
         return redirect(current_url)
 
     context = {'form': form, 'pre_schedule': pre_schedule, 'page':page }
-    return render(request, 'Main-schedule-form.html', context)
+    return render(request, 'main-schedule-form.html', context)

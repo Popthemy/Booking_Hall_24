@@ -1,0 +1,13 @@
+.pagination_button{
+  color:  #bf9f62;
+  background-color: white;
+  text-transform: uppercase;
+  border-width: 10px;
+  margin-right: 10px;
+
+}
+
+.pagination_button:hover{
+  color: #bf9f62;
+  background-color: black;
+}
