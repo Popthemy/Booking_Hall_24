@@ -15,14 +15,25 @@ class PreScheduleForm(forms.ModelForm):
 
 def get_dynamic_time_choices(pre_schedule):
 
-    # get the hall, date and query the mainschedule and get the start and end time back in temple
+    # get the hall, date through querying the mainschedule and get the start and end time back in DB
     pre_schedule_hall = pre_schedule.hall
     pre_schedule_date = pre_schedule.date
+    
+    try:
+        main_schedule_linked_to_pre_schedule = MainSchedule.objects.get(pre_schedule=pre_schedule)
+    except MainSchedule.DoesNotExist:
+        main_schedule_linked_to_pre_schedule = None
+
+    # main_schedule_linked_to_pre_schedule = main_schedule.objects.get(pre_schedule=pre_schedule)
 
     main_schedule = MainSchedule.objects.filter(
-        pre_schedule__hall=pre_schedule_hall, pre_schedule__date=pre_schedule_date)
+        pre_schedule__hall=pre_schedule_hall, pre_schedule__date=pre_schedule_date).exclude(pk=main_schedule_linked_to_pre_schedule.pk if main_schedule_linked_to_pre_schedule else None)
+
+    
+        
     start_end = [(schedule.start_time,  schedule.end_time)
                  for schedule in main_schedule]
+    
     return start_end
 
 
@@ -54,4 +65,4 @@ class MainScheduleForm(forms.ModelForm):
             self.fields['start_time'].choices = available_time
             self.fields['end_time'].choices = available_time
 
-            # print(f'the main schedule {start_end}, {pre_schedule_hall}, {pre_schedule_date}')
+            # print(f'the main schedule {start_end}, {pre_schedule.hall}, {pre_schedule.date}')

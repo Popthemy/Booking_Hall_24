@@ -69,7 +69,12 @@
                     {% if schedule.course_information %}
                         <p class="tm-text-highlight">{{ schedule.course_information|slice:'300' | truncatewords:'20' | linebreaksbr }}</p>
                     {% endif %}
-                    <a href="{% url 'edit-preschedule' schedule.pre_schedule.id %}" class="btn btn-primary">Edit Schedule</a>
+
+                    <a href="{% url 'edit-preschedule' schedule.pre_schedule.id %}" class="btn btn-primary" >Edit Schedule</a>
+
+                    <a href="{% url 'delete-mainschedule' schedule.id %}" class="btn btn-primary" >Delete Schedule</a>
+
+         
                 </div>
             </div>
         </div>

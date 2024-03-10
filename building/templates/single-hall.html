@@ -62,7 +62,9 @@
                   <p class="tm-text-gray">Course information: <br>{{schedule.course_information | linebreaksbr}}...</p> 
                   {% endif %}  
               </div>
+
               {% if request.user.repprofile == schedule.rep_profile %}
+              
               <a href="{% url 'edit-preschedule' schedule.pre_schedule.id %}" class="tm-recommended-price-box">
                   <p class="tm-recommended-price-link">Edit Schedule</p>
               </a>

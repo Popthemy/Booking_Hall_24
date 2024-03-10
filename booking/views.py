@@ -98,7 +98,7 @@ def editMainSchedule(request,pk):
     # to find instance of main schedule the preschedul belongs to
     main_schedule = MainSchedule.objects.get(pre_schedule=pre_schedule)
 
-    form = MainScheduleForm(instance=main_schedule) # pre-filled form
+    form = MainScheduleForm(instance=main_schedule, pre_schedule=pre_schedule) # pre-filled form and also passing the prescheduled needed for the dynamic timing 
     try:
         if request.method == 'POST':
             form = MainScheduleForm( request.POST, instance=main_schedule)
@@ -113,3 +113,19 @@ def editMainSchedule(request,pk):
 
     context = {'form': form, 'pre_schedule': pre_schedule, 'page':page }
     return render(request, 'main-schedule-form.html', context)
+
+
+@login_required(login_url='login-rep')
+def deleteMainSchedule(request,pk):
+    main_schedule = MainSchedule.objects.get(pk=pk)
+    
+    
+    if request.method == 'POST':
+   
+        if main_schedule:
+            main_schedule.delete()
+            message = 'Succefully deleted a schedule'
+            messages.success(request, message)
+            return redirect('dashboard' )
+    context = { "schedule" : main_schedule }
+    return render(request, "delete-schedule.html", context)

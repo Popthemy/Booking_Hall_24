@@ -650,7 +650,7 @@ footer p { color: white; }
     .tm-recommended-price { padding-top: 50px; }
 
     .tm-recommended-price-box {
-        width: 270px;
+        width: 200px;
         height: 180px;        
         position: relative;
         overflow: hidden;

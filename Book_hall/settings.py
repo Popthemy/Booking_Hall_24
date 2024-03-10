@@ -112,7 +112,7 @@ DATABASES ={'default': {
         'HOST': 'roundhouse.proxy.rlwy.net',  # or the IP address of your PostgreSQL server
         'PORT': '54041',       # the default PostgreSQL port
     }
-    }
+}
 
 
 

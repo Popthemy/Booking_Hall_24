@@ -1,6 +1,4 @@
-{% extends "base.html" %} 
-{% block content %}
-
+{% extends "base.html" %} {% block content %}
 
 <section class="tm-banner">
   <div class="tm-container-outer tm-banner-bg">
@@ -16,21 +14,29 @@
       </div>
       <!-- row -->
       <div class="row tm-banner-row" id="tm-section-search">
-        <form method="POST" class="tm-search-form tm-section-pad-2" >
-          {% csrf_token %} 
+        <form method="POST" class="tm-search-form tm-section-pad-2">
+          {% csrf_token %}
           <div class="form-row tm-search-form-row">
-            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-              <label for="inputCity"> Do you realy want to delete {{hall.name}}</label>
-              <p class="mb-4 tm-btn-white-highlight">Note: Deleting this hall also delete all schedule attached to it.</p>
-            
-      
+            <div
+              class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
+            >
+              <label for="inputCity"> Do you realy want to delete {{hall.name}}?</label>
+              <p class="tm-text-highlight">
+                Note: Deleting this hall also delete all schedule attached to
+                it.
+              </p>
             </div>
           </div>
           <!-- form-row -->
-          
 
-          <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1" >
-            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">
+          <div
+            class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
+          >
+            <button
+              type="submit"
+              class="btn btn-primary tm-btn tm-btn-search text-uppercase"
+              id="btnSubmit"
+            >
               Delete hall
             </button>
           </div>
@@ -43,6 +49,5 @@
   </div>
   <!-- .tm-container-outer -->
 </section>
-
 
 {% endblock %}

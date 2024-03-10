@@ -1,6 +1,4 @@
-{% extends "base.html" %} 
-{% block content %}
-
+{% extends "base.html" %} {% block content %}
 
 <section class="tm-banner">
   <div class="tm-container-outer tm-banner-bg">
@@ -8,7 +6,7 @@
       <div class="row tm-banner-row tm-banner-row-header">
         <div class="col-xs-12">
           <div class="tm-banner-header">
-            <h1 class="text-uppercase tm-banner-title">Add Hall</h1>
+            <h1 class="text-uppercase tm-banner-title">Delete schedule</h1>
             <img src="/static/images/dots-3.png" alt="Dots" />
           </div>
         </div>
@@ -16,35 +14,34 @@
       </div>
       <!-- row -->
       <div class="row tm-banner-row" id="tm-section-search">
-        <form
-          method="POST"
-          enctype="multipart/form-data"
-          class="tm-search-form tm-section-pad-2"
-        >
-          {% csrf_token %} 
-          {% for field in form %}
+        <form method="POST" class="tm-search-form tm-section-pad-2">
+          {% csrf_token %}
           <div class="form-row tm-search-form-row">
             <div
               class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
             >
-              <label for="inputCity">{{field.label}}</label>
-
-              {{field}}
+              <label for="inputCity">
+                Do you realy want to delete the schedule with the details
+                {{schedule}}?
+              </label>
+              <p class="tm-text-highlight">
+                Note: Deleting this schedule free up the allocated time for this
+                class( {{schedule.start_time_display}} &mdash;
+                {{schedule.end_time_display}})
+              </p>
             </div>
           </div>
           <!-- form-row -->
-          {% endfor %}
 
           <div
-            class="form-group tm-form-group tm-`form-group-pad tm-form-group-1"
+            class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
           >
-            <label for="btnSubmit">&nbsp;</label>
             <button
               type="submit"
               class="btn btn-primary tm-btn tm-btn-search text-uppercase"
               id="btnSubmit"
             >
-              Add hall
+              Delete hall
             </button>
           </div>
         </form>
@@ -56,6 +53,5 @@
   </div>
   <!-- .tm-container-outer -->
 </section>
-
 
 {% endblock %}
