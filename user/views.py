@@ -102,10 +102,9 @@ def edit_rep_profile(request):
                 messages.error(request, message)
                 
         else:
-            message = "Please kindly edit your account"
+            message = "Error!! check form for you error"
             messages.info(request, message)
        
-
     context = {'form': form}
     return render(request, 'edit-profile.html', context)
 

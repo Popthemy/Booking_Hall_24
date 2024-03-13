@@ -35,14 +35,13 @@
 
               {% if field.errors %}
               {% for error in field.errors %}
-              <small class='mb-4 text-mute' style='color: red;'> {{error}} </small>
+              <p><small class='mb-4 text-mute' style='color: red;'> {{error}} </small></p>
               {% endfor %}
               
               {% endif %}
 
               {% if field.help_text %}
-              
-              <small class='mb-4 text-mute' > {{field.help_text}} </small>
+              <p><small class='mb-4 text-mute' > {{field.help_text}} </small></p>
               {% endif %}
              
             </div>

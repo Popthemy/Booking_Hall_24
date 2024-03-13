@@ -35,6 +35,18 @@
                                     <label for="inputCity">{{field.label}}</label>
                           
                                     {{field}}
+                                    
+                                    {% if field.errors %}
+                                    {% for error in field.errors %}
+                                      <p><small class='mb-4 text-mute' style='color: red;'> {{error}} </small></p>
+                                    {% endfor %}
+                                  
+                                    {% endif %}
+                    
+                                    {% if field.help_text %}
+                                      <p><small class='mb-4 text-mute' > {{field.help_text}} </small></p>
+                                    {% endif %}
+                                 
                                 </div>
 
                                 

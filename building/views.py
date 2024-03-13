@@ -46,7 +46,7 @@ def createHall(request):
             messages.success(request, message)
             return redirect('/')
     context = {'form': form}
-    return render(request, 'hall-form.html', context)
+    return render(request, 'add-hall-form.html', context)
 
 
 def deleteHall(request, pk):
