@@ -29,13 +29,26 @@
                         <form  method="POST" class="tm-search-form tm-section-pad-2">
 
                           {% csrf_token %}
-                          {% for field in form %}
+                          {% comment %} {% for field in form %} {% endcomment %}
                             <div class="form-row tm-search-form-row">
                                 <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                                    <label for="inputCity">{{field.label}}</label>
-                          
-                                    {{field}}
                                     
+
+
+                                    <label for="inputCity">{{form.course.label}}</label>
+                                    {{form.course}}
+                                    
+                                    
+                                    {% if page == 'editing' %}
+                                    <label for="inputCity">{{form.hall.label}}</label>
+                                    {{form.hall}}
+                                    {% endif %}
+                                    
+
+                                    <label for="inputCity">{{form.date.label}}</label>
+                                    {{form.date}}
+                                    
+
                                     {% if field.errors %}
                                     {% for error in field.errors %}
                                       <p><small class='mb-4 text-mute' style='color: red;'> {{error}} </small></p>
@@ -51,7 +64,7 @@
 
                                 
                             </div> <!-- form-row -->
-                            {% endfor %}
+                            {% comment %} {% endfor %} {% endcomment %}
                             
                             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                               <label for="btnSubmit">&nbsp;</label>

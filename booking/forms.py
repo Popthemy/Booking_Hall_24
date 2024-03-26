@@ -6,11 +6,19 @@ from .book_core import dynamic_time_choices
 class PreScheduleForm(forms.ModelForm):
     class Meta:
         model = PreSchedule
-        fields = ['course', 'date']  # '__all__'
+        fields =  '__all__' # ['course', 'date']
         widgets = {
             'date': forms.DateInput(attrs={'format':  'yyyy-mm-dd', 'type': 'date', 'class': 'form-control'}),
             'course': forms.TextInput(attrs={'placeholder':  'Enter course code',  'class': 'form-control'}),
+           
         }  # changing the type of date field from text to date ad specying formats
+
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for name,field in self.fields.items():
+            if name == 'hall':
+                field.widget.attrs.update({'class':'form-control', 'placeholder':'Shoose hall...'})
 
 
 def get_dynamic_time_choices(pre_schedule):

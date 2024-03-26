@@ -42,7 +42,7 @@ class RepProfileForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        super(RepProfileForm,self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         for name, field in self.fields.items():
             if name != 'i_am_a_rep':
