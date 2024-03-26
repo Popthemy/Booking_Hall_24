@@ -13,7 +13,9 @@ body {
 	font-size: 13px;
 	font-weight: 300;
     background: #e6e6e6;
+    
 }
+
 
 a, button { transition: all 0.3s ease; }
 a:hover,
@@ -34,6 +36,7 @@ p:last-child { margin-bottom: 0; }
     max-width: 1400px;
   
     margin: 0 auto;    
+    padding: 15px;
     
 }
 
@@ -650,7 +653,7 @@ footer p { color: white; }
     .tm-recommended-price { padding-top: 50px; }
 
     .tm-recommended-price-box {
-        width: 270px;
+        width: 200px;
         height: 180px;        
         position: relative;
         overflow: hidden;

@@ -27,56 +27,66 @@
                 {% endif %}
              
             </div>
+
       </section>
+
+      <!-- schedule title-->
+      <section class="row tm-banner-row tm-banner-row-header">
+        <div class="container">
+            <div class="row">
+              
+                <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+                  {% if hall_schedules %}
+                    <h2 class="text-uppercase mb-4"> Scheduled classes at <strong>{{hall.name}}</strong>  </h2>
+                    {% else %}
+                    <h2 class="text-uppercase mb-4"> No Scheduled classes at <strong>{{hall.name}}</strong>  </h2>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <!--schedule details-->
+
+      <div class="tab-content clearfix">
+                	
+        <!-- Tab 1 -->
+          <div class="tab-pane fade show active" id="1a">
+            
+              <div class="tm-recommended-place-wrap">
+                {% for schedule in hall_schedules  %}
+                  <div class="tm-recommended-place">
+                      <div class="tm-recommended-description-box">
+                          <h3 class="tm-recommended-title">Course: {{schedule.pre_schedule.course}} <br>  Date: {{schedule.pre_schedule.date}}</h3>
+                          <p class="tm-text-highlight"> Class Starts from: {{schedule.start_time_display}} to {{schedule.end_time_display}} <br>  Class Scheduled by: {{schedule.rep_profile.username}} {{ schedule.rep_profile.conttact_info}}</p>
+                          <p class="tm-text-highlight"></p>
+                          {% if schedule.course_information %}
+                          <p class="tm-text-gray">Course information: <br>{{schedule.course_information | linebreaksbr}}...</p> 
+                          {% endif %}  
+                      </div>
+        
+                      {% if request.user.repprofile == schedule.rep_profile %}
+                      
+                      <a href="{% url 'edit-preschedule' schedule.pre_schedule.id %}" class="tm-recommended-price-box">
+                          <p class="tm-recommended-price-link">Edit Schedule</p>
+                      </a>
+                      {% endif %}
+                  </div>
+                  {% endfor %}  
+              </div>      
+                              
+          </div> <!-- tab-pane -->
+          
+         
+        </div>
+        
+
+
   </div>  
 
-<section class="row tm-banner-row tm-banner-row-header">
-  <div class="container">
-      <div class="row">
-        
-          <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
-            {% if hall_schedules %}
-              <h2 class="text-uppercase mb-4"> Scheduled classes at <strong>{{hall.name}}</strong>  </h2>
-              {% else %}
-              <h2 class="text-uppercase mb-4"> No Scheduled classes at <strong>{{hall.name}}</strong>  </h2>
-              {% endif %}
-          </div>
-      </div>
-  </div>
-</section>
 
 
-<div class="tab-content clearfix">
-                	
-<!-- Tab 1 -->
-  <div class="tab-pane fade show active" id="1a">
-    
-      <div class="tm-recommended-place-wrap">
-        {% for schedule in hall_schedules  %}
-          <div class="tm-recommended-place">
-              <div class="tm-recommended-description-box">
-                  <h3 class="tm-recommended-title">Course: {{schedule.pre_schedule.course}} <br>  Date: {{schedule.pre_schedule.date}}</h3>
-                  <p class="tm-text-highlight"> Class Starts from: {{schedule.start_time_display}} to {{schedule.end_time_display}} <br>  Class Scheduled by: {{schedule.rep_profile.username}} {{ schedule.rep_profile.conttact_info}}</p>
-                  <p class="tm-text-highlight"></p>
-                  {% if schedule.course_information %}
-                  <p class="tm-text-gray">Course information: <br>{{schedule.course_information | linebreaksbr}}...</p> 
-                  {% endif %}  
-              </div>
 
-              {% if request.user.repprofile == schedule.rep_profile %}
-              
-              <a href="{% url 'edit-preschedule' schedule.pre_schedule.id %}" class="tm-recommended-price-box">
-                  <p class="tm-recommended-price-link">Edit Schedule</p>
-              </a>
-              {% endif %}
-          </div>
-          {% endfor %}  
-      </div>      
-                      
-  </div> <!-- tab-pane -->
-  
- 
-</div>
 
 
 {% endblock  %}
