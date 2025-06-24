@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@=tt4_$^!g2lz288$j_+!5ug87%nctd%+ff=pxi7hxtb-1y^+g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [ '0.0.0.0' ,'localhost', '127.0.0.1', 'localhost:800', 'bookinghall24-production.up.railway.app' ]
 
@@ -60,7 +60,6 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware', #for static files when Debug=False
 
     'django.middleware.common.CommonMiddleware',
-    
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -92,27 +91,27 @@ WSGI_APPLICATION = 'Book_hall.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # for postgres offline
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Book_hall',
-#         'USER': 'postgres',
-#         'PASSWORD': 'leebackendengine',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
-# railway postgres Db online
-DATABASES ={'default': {
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
+        'NAME': 'Book_hall',
         'USER': 'postgres',
-        'PASSWORD': 'G4A5dfeebG1beec1*1egbFeF6A3bEFde',
-        'HOST': 'roundhouse.proxy.rlwy.net',  # or the IP address of your PostgreSQL server
-        'PORT': '54041',       # the default PostgreSQL port
+        'PASSWORD': 'leebackendengine',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+# railway postgres Db online
+# DATABASES ={'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'G4A5dfeebG1beec1*1egbFeF6A3bEFde',
+#         'HOST': 'roundhouse.proxy.rlwy.net',  # or the IP address of your PostgreSQL server
+#         'PORT': '54041',       # the default PostgreSQL port
+#     }
+# }
 
 
 
@@ -167,10 +166,11 @@ cloudinary.config(
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-STATIC_URL = 'static/'
-MEDIA_URL = ''
 
+MEDIA_URL = ''
 MEDIA_ROOT = BASE_DIR / 'static/images'
+
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'general_static'
 

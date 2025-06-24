@@ -15,15 +15,19 @@
               <h2 class="">{{hall.name}}</h2>
               <p> {{hall.location|slice:'300' |linebreaksbr}} </p>
 
-                {% if request.user.repprofile.i_am_a_rep %}
-                    <a href="{% url "pre-schedule" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  Book {{hall.name}} </a>
-                {% else %}
-                <h5 class="tm-text-highlight">Sorry you can't book hall yet become a Rep on your dashboard to be able to. </h5>
+                {% if request.user.is_authenticated %}
 
-                {% endif %}
+                  {% if request.user.repprofile.i_am_a_rep %}
+                      <a href="{% url "pre-schedule" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">  Book {{hall.name}} </a>
+                  {% else %}
+                  <h5 class="tm-text-highlight">Sorry you can't book hall yet become a Rep on your dashboard to be able to. </h5>
 
-                {% if request.user.is_superuser %}
-                    <a href="{% url "delete-hall" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">  Delete {{hall.name}} </a>
+                  {% endif %}
+
+                  {% if request.user.is_superuser %}
+                      <a href="{% url "delete-hall" hall.id %}" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">  Delete {{hall.name}} </a>
+                  {% endif %}
+
                 {% endif %}
              
             </div>

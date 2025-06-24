@@ -1,74 +1,57 @@
 {% extends "base.html" %} {% block content %}
 {% load static %}
 <body>
-  <section class="row tm-banner-row tm-banner-row-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
-          <h2 class="text-uppercase mb-4">
-            <strong> Great Ladokite </strong> <br />
-            <strong> Greatest Ladokite </strong> <br />
-            <p class="mb-4">Intergrity and Service.</p>
-          </h2>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="p-5 tm-container-outer tm-bg-gray">
     <div class="container">
-      {% if request.user.is_authenticated %}
-      <div class="col-xs-12 mx-auto tm-about-text-wrap   text-center">
-        <a href=" {% url 'create-hall' %}" class="text-uppercase tm-btn  tm-btn-white tm-btn-white-primary">
-          <strong>Add Hall</strong>
-        </a>
-      </div>
-      {% endif %}
 
-      <!-- search tab  -->
-      <div class="row tm-banner-row" id="tm-section-search">
-        <form
-          action="{% url 'all-halls' %}"
-          method="GET"
-          class="tm-search-form tm-section-pad-2"
-        >
-          <div class="form-row tm-search-form-row">
-            <div
-              class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
-            >
-              <label for="inputCity">Search Hall</label>
-              <input
-                class="form-control"
-                id="inputCity"
-                name="search_query"
-                type="text"
-                value="{{search_query}}"
-                placeholder="Search by hall title"
-              />
+      <div class="row">
+        <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+            <h2 class="text-uppercase mb-4">
+              <strong> Great Ladokite </strong> <br />
+              <strong> Greatest Ladokite </strong> <br />
+              <p class="mb-4">Intergrity and Service</p>
+            </h2>
+          
+            {% if request.user.is_authenticated %}
+            <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+              <a href=" {% url 'create-hall' %}" class="text-uppercase tm-btn  tm-btn-white tm-btn-white-primary">
+                <strong>Add Hall</strong>
+              </a>
             </div>
-          </div>
-          <!-- form-row -->
+            {% endif %}
 
-          <div
-            class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
-          >
-            <label for="btnSubmit">&nbsp;</label>
-            <button
-              type="submit"
-              class="btn btn-primary tm-btn tm-btn-search text-uppercase"
-              id="btnSubmit"
-            >
-              Find Hall
-            </button>
-          </div>
-        </form>
-      </div>
-      <!-- row -->
+            <!-- search tab  -->
+              <div class="row tm-banner-row" id="tm-section-search">
+                <form action="{% url 'all-halls' %}" method="GET" class="tm-search-form tm-section-pad-2">
+                  <div class="form-row tm-search-form-row">
+                    <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                      <label for="inputCity">Search Hall</label>
+                      <input class="form-control" id="inputCity" name="search_query" type="text" value="{{search_query}}" placeholder="Search by hall title"/>
+                    </div>
+                  </div>
+                  <!-- form-row -->
+      
+                  <div
+                    class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
+                  >
+                    <label for="btnSubmit">&nbsp;</label>
+                    <button
+                      type="submit"
+                      class="btn btn-primary tm-btn tm-btn-search text-uppercase"
+                      id="btnSubmit"
+                    >
+                      Find Hall
+                    </button>
+                  </div>
+                </form>
+              </div>
+            <!-- row -->
+            
+        </div>
+
     </div>
   </section>
-
-
-
   
   
 
@@ -84,17 +67,17 @@
         </div>
     
         <div class="tm-slideshow-description tm-bg-primary  {% if forloop.counter|divisibleby:2 %}  {% else %} tm-slideshow-description tm-slideshow-description-left tm-bg-highlight  {% endif %} "  >
-    
-        <h2 class="">{{hall.name}}</h2>
-        <p>{{hall.location|linebreaksbr |slice:'250' }}</p>
-        <a
-          href=" {% url 'single-hall' hall.id %} "
-         
-          class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary {% if forloop.counter|divisibleby:2 %}  {% else %} text-uppercase tm-btn tm-btn-white tm-btn-white-highlight {% endif %}"
-        >
-          Check {{hall.name}} schedule
-        </a>
-      </div>
+      
+          <h2 class="">{{hall.name}}</h2>
+          <p>{{hall.location|linebreaksbr |slice:'250' }}</p>
+          <a
+            href=" {% url 'single-hall' hall.id %} "
+          
+            class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary {% if forloop.counter|divisibleby:2 %}  {% else %} text-uppercase tm-btn tm-btn-white tm-btn-white-highlight {% endif %}"
+          >
+            Check {{hall.name}} schedule
+          </a>
+        </div>
     </section>
     {% endfor %}
   </div>
