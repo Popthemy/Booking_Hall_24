@@ -11,19 +11,19 @@ class PreScheduleForm(forms.ModelForm):
             'date': forms.DateInput(attrs={'format':  'yyyy-mm-dd', 'type': 'date', 'class': 'form-control'}),
             'course': forms.TextInput(attrs={'placeholder':  'Enter course code',  'class': 'form-control'}),
            
-        }  # changing the type of date field from text to date ad specying formats
+        }  # changing the type of date field from text to date ad specifying formats
 
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
 
         for name,field in self.fields.items():
             if name == 'hall':
-                field.widget.attrs.update({'class':'form-control', 'placeholder':'Shoose hall...'})
+                field.widget.attrs.update({'class':'form-control', 'placeholder':'Choose hall...'})
 
 
 def get_dynamic_time_choices(pre_schedule):
 
-    # get the hall, date through querying the mainschedule and get the start and end time back in DB
+    # get the hall, date through querying the main schedule and get the start and end time back in DB
     pre_schedule_hall = pre_schedule.hall
     pre_schedule_date = pre_schedule.date
     
@@ -32,10 +32,9 @@ def get_dynamic_time_choices(pre_schedule):
     except MainSchedule.DoesNotExist:
         main_schedule_linked_to_pre_schedule = None
 
-    # main_schedule_linked_to_pre_schedule = main_schedule.objects.get(pre_schedule=pre_schedule)
-
     main_schedule = MainSchedule.objects.filter(
-        pre_schedule__hall=pre_schedule_hall, pre_schedule__date=pre_schedule_date).exclude(pk=main_schedule_linked_to_pre_schedule.pk if main_schedule_linked_to_pre_schedule else None)
+        pre_schedule__hall=pre_schedule_hall, pre_schedule__date=pre_schedule_date).\
+            exclude(pk=main_schedule_linked_to_pre_schedule.pk if main_schedule_linked_to_pre_schedule else None)
 
     
         
