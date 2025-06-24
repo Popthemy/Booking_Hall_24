@@ -26,24 +26,22 @@
           {% csrf_token %} 
           {% for field in form %}
           <div class="form-row tm-search-form-row">
-            <div
-              class="form-group tm-form-group tm-form-group-pad tm-form-group-1"
-            >
+            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
               <label for="inputCity">{{field.label}}</label>
 
-              {{field}} 
+              {{field}}
 
               {% if field.errors %}
               {% for error in field.errors %}
               <p><small class='mb-4 text-mute' style='color: red;'> {{error}} </small></p>
               {% endfor %}
-              
+
               {% endif %}
 
               {% if field.help_text %}
               <p><small class='mb-4 text-mute' > {{field.help_text}} </small></p>
               {% endif %}
-             
+
             </div>
           </div>
           <!-- form-row -->
@@ -67,23 +65,23 @@
         {% else %}
         <!-- The login page  -->
         <div class="tm-search-form tm-section-pad-2 text-center">
-          <h3 class="text-uppercase mb-4">Welcome back!👋</h3>
+          <h3 class="text-uppercase mb-4">Welcome back👋</h3>
           <p class="mb-4">Get help abstracting your scheduling process. <br>
             Doesn't have an account. <a href="{% url 'register-rep' %}"> Sign up</a></p>
         </div>
 
-        <form method="POST" class="tm-search-form tm-section-pad-2">
+        <form method="POST"  action="{% url 'login-rep' %}" class="tm-search-form tm-section-pad-2">
           {% csrf_token %} 
           
           <div class="form-row tm-search-form-row">                                
             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                 <label for="inputCity">Username</label>
-                <input name="username" type="text" class="form-control" id="inputCity" placeholder="Enter your username...">
+                <input name="username" type="text" class="form-control" id="username" placeholder="Enter your username...">
             </div>
 
             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                 <label for="inputCity">Password</label>
-                <input name="password" type="password" class="form-control" id="inputCity" placeholder="Enter your password...">
+                <input name="password" type="password" class="form-control" id="password" placeholder="Enter your password...">
             </div>
 
             
@@ -106,8 +104,6 @@
           <p class="mb-4"><br>
             Can't remember password?  <a href="{% url 'password_reset_view' %}"> Forgot Password</a></p>
         </div>
-
-
 
         {% endif %}
       </div>
