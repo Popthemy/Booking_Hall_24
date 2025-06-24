@@ -2,3 +2,5 @@ env/
 
 # contains note about the project growth
 note.txt
+/__pycache__/
+*.pyc
