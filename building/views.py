@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.core.exceptions import ValidationError
 from booking.models import MainSchedule
 
 
@@ -33,18 +34,25 @@ def single_hall(request, pk):
 
 def createHall(request):
     form = HallForm()
+    
+    current_path = request.get_full_path()
+    try:
 
-    if request.POST:
-        form = HallForm(request.POST, request.FILES)
-        if form.is_valid():
-            hall_form = form.save(commit=False)
-            hall_form.name = hall_form.name.upper()
-            print(hall_form.name)
+        if request.method == "POST":
+            form = HallForm(request.POST, request.FILES)
+            if form.is_valid():
+                hall_form = form.save(commit=False)
+                hall_form.name = hall_form.name.upper()
 
-            form.save()
-            message = 'You have succefully added a new hall.'
-            messages.success(request, message)
-            return redirect('/')
+                form.save()
+                message = 'You have successfully added a new hall.'
+                messages.success(request, message)
+                return redirect('/')
+    except ValidationError as e:
+        message = e
+        messages.error(request,message)
+        return redirect(current_path)
+
     context = {'form': form}
     return render(request, 'add-hall-form.html', context)
 

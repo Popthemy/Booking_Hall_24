@@ -45,7 +45,7 @@ class MainSchedule(models.Model):
 
     @property
     def start_time_display(self):
-        '''The choice field was displaying with a 24hrs formaat was index 0 of our time_choices so we used this function to overwrite it '''
+        '''The choice field was displaying with a 24hrs format was index 0 of our time_choices so we used this function to overwrite it '''
         for choice in self.TIME_CHOICES:
             if choice[0] == self.start_time:
                 return choice[1]

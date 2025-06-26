@@ -4,7 +4,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Hall
 
 
-
 def search_halls(request):
     ''' param: request
     get search query from the request
@@ -18,7 +17,6 @@ def search_halls(request):
     halls = Hall.objects.distinct().filter(Q(name__icontains=search_query)
                                            | Q(location__icontains=search_query))
     return search_query, halls
-
 
 
 def paginate_halls(request,halls,result):
@@ -39,6 +37,3 @@ def paginate_halls(request,halls,result):
         paginated_page = paginated_halls_query.page(page)
 
     return paginated_page
-
-    
-

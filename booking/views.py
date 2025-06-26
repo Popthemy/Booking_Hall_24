@@ -33,8 +33,6 @@ def create_preSchedule(request, pk):
     return render(request, 'pre-schedule-form.html', context)
 
 
-
-
 @login_required(login_url='login-rep')
 def create_mainSchedule(request, pk):
     schedule_owner = request.user.repprofile
